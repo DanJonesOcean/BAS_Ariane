@@ -1,0 +1,104 @@
+&ARIANE
+    key_alltracers =.TRUE.,
+    key_sequential =.TRUE.,
+    key_ascii_outputs =.TRUE.,
+    mode ='quantitative',
+    forback ='backward',
+    bin ='nobin',
+    init_final ='final',
+    nmax =5000000,
+    tunit =86400.,
+    ntfic =5,
+    tcyc =0.,
+    key_computesigma = .TRUE.,
+/
+&OPAPARAM
+    imt =1442,
+    jmt =1021,
+    kmt =75,
+    lmt =1095,
+    key_periodic =.FALSE.,
+    key_jfold =.FALSE.,
+    key_computew =.FALSE.,
+    key_partialsteps =.TRUE.,
+/
+&SEQUENTIAL
+    maxcycles =1,
+/
+&QUANTITATIVE
+  key_eco        = .FALSE.,
+  key_reducmem   = .TRUE.,
+  key_unitm3     = .FALSE.,
+  key_nointerpolstats = .FALSE.,
+  max_transport  = 1.e2,
+  lmin           = 1065,
+  lmax           = 1095,
+/
+&ZONALCRT
+    c_dir_zo ='/home/users/mbu66/examples/data/ORCA025-N401_daily',
+    c_prefix_zo ='ORCA025-N401_d_U_',
+    ind0_zo =01,
+    indn_zo =1095,
+    maxsize_zo =4,
+    c_suffix_zo ='.nc',
+    nc_var_zo ='vozocrtx',
+    nc_var_eivu ='NONE',
+    nc_att_mask_zo ='NONE',
+/
+&MERIDCRT
+    c_dir_me ='/home/users/mbu66/examples/data/ORCA025-N401_daily',
+    c_prefix_me ='ORCA025-N401_d_V_',
+    ind0_me =01,
+    indn_me =1095,
+    maxsize_me =4,
+    c_suffix_me ='.nc',
+    nc_var_me ='vomecrty',
+    nc_var_eivv ='NONE',
+    nc_att_mask_me ='NONE',
+/
+&VERTICRT
+    c_dir_ve ='/home/users/mbu66/examples/data/ORCA025-N401_daily',
+    c_prefix_ve ='ORCA025-N401_d_W_',
+    ind0_ve =01,
+    indn_ve =1095,
+    maxsize_ve =4,
+    c_suffix_ve ='.nc',
+    nc_var_ve ='vovecrtz',
+    nc_att_mask_ve ='_FillValue',
+/
+&TEMPERAT
+  c_dir_te     = '/home/users/mbu66/examples/data/ORCA025-N401_daily',
+  c_prefix_te  = 'ORCA025-N401_d_T_',
+  ind0_te      = 01,
+  indn_te      = 1095,
+  maxsize_te   = 4,
+  c_suffix_te  = '.nc',
+  nc_var_te    = 'votemper',
+  nc_att_mask_te = 'NONE',
+/
+&SALINITY
+  c_dir_sa     = '/home/users/mbu66/examples/data/ORCA025-N401_daily',
+  c_prefix_sa  = 'ORCA025-N401_d_T_',
+  ind0_sa      = 01,
+  indn_sa      = 1095,
+  maxsize_sa   = 4,
+  c_suffix_sa  = '.nc',
+  nc_var_sa    = 'vosaline',
+  nc_att_mask_sa = 'NONE',
+/
+&MESH
+    dir_mesh ='/home/users/mbu66/examples/data/fields/',
+    fn_mesh ='mesh_hgr_matt.nc',
+    nc_var_xx_tt ='glamt',
+    nc_var_xx_uu ='glamu',
+    nc_var_yy_tt ='gphit',
+    nc_var_yy_vv ='gphiv',
+    nc_var_zz_ww ='gdepw_0',
+    nc_var_e2u ='e2u',
+    nc_var_e1v ='e1v',
+    nc_var_e1t ='e1t',
+    nc_var_e2t ='e2t',
+    nc_var_e3t ='e3t',
+    nc_var_tmask ='tmask',
+    nc_mask_val =0.,
+/

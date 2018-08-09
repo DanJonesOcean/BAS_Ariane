@@ -1,0 +1,27 @@
+The mesh grid files stored in the NEMO groupspace also have to be edited for Ariane to be able to read it.
+They can be found in directories similar to /group_workspaces/jasmin2/nemo/vol1/ORCA025-N401/domain which contains :
+		mesh_hgr.nc
+		mesh_zgr.nc
+		mask.nc
+
+You can copy these to your home directory and to combine them into a complete mesh_hgr.nc, that Ariane can read, you
+run the commands: 
+
+cp mesh_hgr.nc mesh_hgr.nc_orig
+ncks -A -v e3t mesh_zgr.nc mesh_hgr.nc
+ncks -A -v gdepw_0 mesh_zgr.nc mesh_hgr.nc
+ncks -A -v tmask mask.nc mesh_hgr.nc
+
+These are given in the Ariane Namelist Document on the Ariane website (http://stockage.univ-brest.fr/~grima/Ariane/doc.html).
+
+You have to be careful though because the first variable e3t is called e3t_0 in ORCA0083-N006 data, I am not sure what it is
+in the other folders, but make sure it is a 4 dimensional double not a 2 dimensional one. These names are also different to 
+the ones in the Ariane Namelist Document. The vairable names are generally inconsistent.
+
+Use 'ncdump -h mesh_zgr.nc' to check
+
+        i.e. for ORCA025-N401                     i.e. for ORCA0083-N006
+        double e3t(t, z, y, x) ;                  double e3t_0(t, z, y, x) ;      
+        		e3t:_FillValue = 0. ;                 		e3t_0:_FillValue = 0. ;
+        double e3t_0(t, z) ;                      double e3t_1d(t, z) ;
+		        e3t_0:_FillValue = 0. ;                   e3t_1d:_FillValue = 0. ;

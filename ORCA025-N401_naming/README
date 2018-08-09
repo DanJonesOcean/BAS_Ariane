@@ -1,0 +1,26 @@
+Ariane is very particular about the naming of the data files that reads in.
+These scripts should create symbolic links in a directory of your choice ($OUTDIR) pointing to the data in the NEMO groupspace on Jasmin with a nameing format that Ariane can handle with the following formats.
+
+In the Ariane namelist file:
+
+c_dir_xx = $OUTDIR,
+c_prefix_xx = 'ORCA025-N401_{a}_{b}_',   where a = {d,m,y} and b = {U,V,W,T}
+c_suffix_xx ='.nc',
+
+  i.e. for 5 day mean data
+        &ZONALCRT 
+        c_dir_zo = '/home/users/user_name/links_folder/',
+        c_prefix_zo = 'ORCA025-N401_d_U_', 
+        c_suffix_zo ='.nc',
+        
+        &MERIDCRT
+        c_dir_me = '/home/users/user_name/links_folder/',
+        c_prefix_me = 'ORCA025-N401_d_V_', 
+        c_suffix_me ='.nc',
+        
+        etc.
+
+To correctly set ind0 and indn, the command 'ls -rtl $OUTDIR' will show you which index number corresponds to which data file, an example is given in the scripts
+
+The example namelist is for a backwards running quantitative experiment with 5 day mean data. 
+The attibutes that these scripts will set are given in the &ZONALCRT, &MERIDCRT, &VERTICRT, &TEMPERAT, and &SALINITY sections, as described above

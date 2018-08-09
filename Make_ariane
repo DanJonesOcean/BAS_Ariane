@@ -1,0 +1,18 @@
+To install Ariane in your Jasmin home directory
+Upload the ariane-x.x.x folder into your home directory, replace 'user_name' with your Jasmin username and run these 
+bash commands:
+
+export NETCDF_INC=/usr/include
+export NETCDF_LIB=/usr/lib64
+./configure --prefix=/home/users/user_name
+make && make check 
+make install
+
+can check it has correctly installed with 'which ariane', a correct install returning '~/bin/ariane'
+
+The 'make uninstall' command will cleanly uninstall the instalation if things go wrong.
+
+There are other builds of Ariane on Jasmin if you want to use them, however they will potentially have their own 
+methods of implimenting the criteria scripts (mod_criter0.f90 etc) that differ from the user manual on the Ariane 
+website (http://stockage.univ-brest.fr/~grima/Ariane/doc.html), which requires you to edit some fortran files and 
+reinstall Ariane. 

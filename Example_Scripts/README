@@ -1,0 +1,9 @@
+Experiment to run backwards for 25 years, sourcing the particles at 24 North and intergrating them backwards from Dec 2010 to
+Jan 1996. The experiment used 5 day mean ORCA025-N401 data, and initialised particles in the last 30 data files, ie from July
+to Dec 2010.
+
+The quantitative experiment was run in the directory containing:
+namelist
+segrid
+region_limits
+sections.txt

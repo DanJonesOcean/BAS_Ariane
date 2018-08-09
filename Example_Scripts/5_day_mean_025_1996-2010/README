@@ -1,0 +1,19 @@
+Experiment to run backwards for 25 years, sourcing the particles at 24 North and intergrating them backwards from Dec 2010 to
+Jan 1996. The experiment used 5 day mean ORCA025-N401 data, and initialised particles in the last 30 data files, ie from July
+to Dec 2010.
+
+The quantitative experiment was run in the directory containing:
+namelist
+segrid
+region_limits
+sections.txt
+
+The results folder contains the output of running this experiment, including the edited mod_criter.f90 files.
+These files were edited and then Ariane reinstalled before running as described in the user manual found on the website.
+mod_criter0 is set to only initite particles at a certian depth range
+mod_criter1 is set to only integrate particles for the same fixed length of time
+http://stockage.univ-brest.fr/~grima/Ariane/doc.html
+
+The qualitative folder has the namelist for calculating the trajectories of the particles that made it to the northern 
+boundaries in the quantitative experiments. You create a subbin.txt file with the particles you with to initiate, and 
+then change bin from 'nobin' to 'subbin' in the namelist file.
