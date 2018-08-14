@@ -30,7 +30,7 @@ RUNTYPE="*d05"
 for i in U V W T
   do
       n=$((1))
-      for j in 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010   #Dates
+      for j in {1996..2010}   #Dates
       do
           for k in `ls -1 $SOURCEDIR$j/$ORCANAME$j$RUNTYPE$i.nc`
           do

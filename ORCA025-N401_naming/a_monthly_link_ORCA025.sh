@@ -30,7 +30,7 @@ RUNTYPE="m*"
 for i in U V W
   do
       n=$((1))
-      for j in 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010
+      for j in {1996..2010}
       do
           for k in `ls -1 $SOURCEDIR$j/$ORCANAME$j$RUNTYPE$i.nc`
           do
@@ -47,7 +47,7 @@ for i in U V W
 
 #Create links T (different due to UT VT and WT data files complicating life)
 n=$((1))
-for j in 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010
+for j in {1996..2010}
 do
     for k in 01 02 03 04 05 06 07 08 09 10 11 12
     do
