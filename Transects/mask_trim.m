@@ -1,6 +1,7 @@
-%%
+% ------------------------------------------------------------------------ %
 % Cutting down vmask to just the north atlantic basin with maximum effort
 % by filling the undesired space with 0's 
+
 function trim = mask_trim()
 ncid1 = netcdf.open('mask.nc','NC_NOWRITE');
 trim = single(netcdf.getVar(ncid1,6));
@@ -54,4 +55,4 @@ end
 
 return
 
-%% 
+% ------------------------------------------------------------------------ % 

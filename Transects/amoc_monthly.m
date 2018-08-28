@@ -1,9 +1,17 @@
-%% ---------------------------------------------------------------
+% --------------------------------------------------------------- %
+% Plots an Overturning Circulation streamfunction as defined in
+% calc_psi_matt.m for a monthly mean of ORCA025-N401 data for the
+% North Atlantic Basin (Masked by mask_trim.m) and saves the output
+% in the working dircetory ready to be turned into a gif
 
+% --------------------------------------------------------------- %
+% --------------------------------------------------------------- %
+% Loop over 12 months
 for i = 01:12
     % Load Nemo output data
     
-    str = [[string('ORCA025-N401_2010m'),sprintf('%02d',i),string('V.nc')]];
+    str = [[string('ORCA025-N401_2010m'),sprintf('%02d',i), ...
+		string('V.nc')]];
     filename = join(str,'');
     
     ncid1 = netcdf.open(filename,'NC_NOWRITE');
@@ -27,13 +35,10 @@ for i = 01:12
     grid(1).nx = 1442;                      %Lon size
     grid(1).ny = 1021;                      %Lat size
     grid(1).nz = 75;                        %Depth size
-        %grid(1).hfacw = ??; I do not know what this is
 
 % Load global position data
     gphit = netcdf.getVar(ncid2,8);         %gphit
     gdept = netcdf.getVar(ncid2,25);        %gdept_0
-        %e3v = netcdf.getVar(ncid2,26);         %e3v
-        %mask = mask ./ e3v; this messes things up for some reason
 
 %% ---------------------------------------------------------------
 % Calculate psi
@@ -52,19 +57,23 @@ for i = 01:12
     hold on;
     xlabel('Lattitude/deg')
     ylabel('Depth/m')
+
 %% 
 %Overlay bathymetry - low res but black
 %mask = double(mask);
 %img = imresize(im2double(getframe(gca).cdata), size(squeeze(mask(1039,:,:))'));
 %figure(); colorbar; axis off;
 %imagesc(img.*queeze(mask(1039,:,:))'); 
+
 %%
 %Overlay bathymetry - high res but blue 
 %img = imagesc(gphit(1039, 600:1021)', ...
 %    -gdept', squeeze(mask(1039,600:1021,:))');
 %alphamask = 1 - squeeze(mask(1039,600:1021,:))';
 %alpha(img, alphamask);
+
 %%
+% Title, save and print status to command line
 ttl = join([string('North Atlantic Overturning Stream function 2010 / m^2s^{-1} - Month'), sprintf('%02d',i)]);
     
     title(char(ttl));    
@@ -76,6 +85,13 @@ ttl = join([string('North Atlantic Overturning Stream function 2010 / m^2s^{-1} 
     fprintf('\n')
     close;
 end
+
+% --------------------------------------------------------------- %
+% --------------------------------------------------------------- %
+
+%%
+% Update status done
 fprintf('Done')
 fprintf('\n')
-%%
+
+% --------------------------------------------------------------- %

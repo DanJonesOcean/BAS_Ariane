@@ -75,12 +75,12 @@ for i in range(1,2):
   transplt  = plt.contourf(np.repeat(glamt[820:1100, lat : lat+1].T, 75, axis=0).T,
                           -np.repeat(gdept.T[:, None], 280, axis=1).T,
                           np.squeeze(ntemp[820:1100, lat:lat+1, :]),
-                          np.arange(-0.15, 0.15, .001),
-                          cmap='viridis', vmin=-0.15, vmax=0.15,
+                          np.arange(-0.01, 0.01, .001),
+                          cmap='viridis', vmin=-0.01, vmax=0.01,
                           extend='both')
 
   # Add a colour bar.
-  cbar = plt.colorbar(transplt, ticks=np.arange(-0.15, 0.16, .05))
+  cbar = plt.colorbar(transplt, ticks=np.arange(-0.01, 0.02, .001))
   #plt.show()
   myfig = ''.join([outdir,'vec_trans_yr', str(i).zfill(2), '.png'])
   # Save a hires version of the figure

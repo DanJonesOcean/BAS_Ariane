@@ -1,3 +1,7 @@
+% ----------------------------------------------------------------- %
+% Plots a depth time graph with each of the particles in a different
+% colour
+
 figure();
 hold on;
 for i = drange(1:3600)
@@ -6,3 +10,5 @@ for i = drange(1:3600)
 end
 
 hold off;
+
+% ----------------------------------------------------------------- %
