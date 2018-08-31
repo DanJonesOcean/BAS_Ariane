@@ -1,19 +1,23 @@
 % ----------------------------------------------------------------- %
-% extracts particles that go through the 24N detection region 
+%% Extracts particles that go through the 24N detection region 
 
-extraction_temp = traj((traj(:,3) < 25) & (traj(:,3) > 23), :);
-extraction = extraction_temp((extraction_temp(:,2) < -40) ...
-                                & (extraction_temp(:,2) > -50), :);
+%% Filter latitude
+extraction = traj((traj(:,3) < 25) & (traj(:,3) > 23), :);
 
+%% Filter longitude
+extraction = extraction((extraction(:,2) < -40) ...
+                                & (extraction(:,2) > -50), :);
+
+%% Filter depth
 extraction = extraction((extraction(:,4) < -1500) ...
                                 & (extraction(:,4) > -2500), :);
 
+%% Create empty vector to house particle identities
 particles = zeros(size(extraction_temp(:,1)));                            
+
+%% Extract distict particle numbers from intersecting positions and put into empty vector
 count = 1;
-
-% Create new aray for extracted particles
-
-for i = [1:size(extraction(:,1))]
+for i = 1:size(extraction(:,1))
     if ismember(extraction(i,1),particles)
         
     else
@@ -22,20 +26,20 @@ for i = [1:size(extraction(:,1))]
     end
 end
 
+%% Remove any unfilled cells
 particles( ~any(particles,2), : ) = [];
+
+%% Extract trajectories of particles with numbers in this array
 particle_traj = traj( ismember(traj(:,1), particles(:,1)) , : );
 
-% Print some results to screen
-
+%% Print some results to screen
 fprintf('The number of particles that go through 24N is: \n\t');
 fprintf(char(string(count - 1)));
 fprintf('\n');
 
-% Clear temporary variables
-
+%% Clear temporary variables
 clear extraction;
 clear particles;
-clear extraction_temp;
 clear i;
 clear count;
 
