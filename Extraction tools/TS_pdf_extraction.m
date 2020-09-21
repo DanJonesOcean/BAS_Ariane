@@ -103,6 +103,10 @@ set(h,'ZData',heights)
 % View from above
 view(2);
 
+% Add isobars
+hold on;
+Tscadre(S,T);
+
 %{
  This can be used to view the 3D histogram above the 2D pdf, but looks a
  little messy if the spread of data is too large.
@@ -145,6 +149,10 @@ set(h,'ZData',heights)
 
 % View from above
 view(2);
+
+% Add isobars
+hold on;
+Tscadre(S,T);
 
 %{
  This can be used to view the 3D histogram above the 2D pdf, but looks a
